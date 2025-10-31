@@ -1,0 +1,3 @@
+git log --oneline  # Per veure l'historial
+git checkout 21f8aba  # Per tornar a aquest commit específic
+git checkout main  # Per tornar a la branca principal
