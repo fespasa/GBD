@@ -1102,7 +1102,7 @@ function TriageEngine() {
     setAnswers(newAnswers);
 
     // Manejo especial para pregunta inicial de flujos condicionales
-    if (currentFlow.type === 'conditional' && questionId === 'initial') {
+    if (currentFlow.type === 'conditional' && questionId === 'wh_initial') {
       const selectedOption = currentFlow.initialQuestion.options.find(opt => opt.value === answer);
       
       setFlowState({
