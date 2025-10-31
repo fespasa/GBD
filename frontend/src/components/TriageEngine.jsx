@@ -998,9 +998,7 @@ const TRIAGE_ALGORITHMS = {
         ]
       }
     }
-  },
-
-
+  }
 };
 
 /* ===================================
@@ -1452,6 +1450,19 @@ function TriageEngine() {
   /* ===================================
      INTERFAZ PRINCIPAL DE TRIAJE
   =================================== */
+  
+  // Mostrar loading si no hay flujo cargado aún
+  if (!currentFlow) {
+    return (
+      <div style={{ minHeight: '100vh', backgroundColor: '#17ab9c', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', color: 'white' }}>
+          <div style={{ fontSize: '18px', marginBottom: '8px' }}>Cargando triaje...</div>
+          <div style={{ fontSize: '14px', opacity: 0.8 }}>Preparando evaluación médica</div>
+        </div>
+      </div>
+    );
+  }
+  
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#17ab9c' }}>
       
