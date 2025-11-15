@@ -40,16 +40,12 @@ function SpecialtySelectionSimple() {
   ];
 
   const handleSpecialtySelect = (specialty) => {
-    console.log('Specialty selected:', specialty);
-    console.log('Specialty ID:', specialty.id);
     setSpecialty(specialty);
     
     // Para salud mental, ir directo al formulario en lugar del triaje
     if (specialty.id === 'mental-health') {
-      console.log('Navigating to mental health form');
       navigate('/mental-health-form');
     } else {
-      console.log('Navigating to triage for:', specialty.id);
       navigate(`/triage/${specialty.id}`);
     }
   };

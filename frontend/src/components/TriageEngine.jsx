@@ -1044,6 +1044,12 @@ function TriageEngine() {
       return;
     }
 
+    // Redireccionar salud mental al formulario directo
+    if (specialty === 'mental-health') {
+      navigate('/mental-health-form');
+      return;
+    }
+
     // Cargar algoritmo de la especialidad seleccionada
     const algorithm = TRIAGE_ALGORITHMS[specialty];
     if (!algorithm) {
