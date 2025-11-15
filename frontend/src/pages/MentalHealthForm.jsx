@@ -24,6 +24,7 @@ function MentalHealthForm() {
   
   // Estados del formulario
   const [consultationReason, setConsultationReason] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [appointmentType, setAppointmentType] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
@@ -90,6 +91,16 @@ function MentalHealthForm() {
       return;
     }
 
+    if (!phoneNumber.trim()) {
+      alert('Por favor, ingrese su número de teléfono');
+      return;
+    }
+
+    if (!/^\d{9,15}$/.test(phoneNumber.replace(/\s/g, ''))) {
+      alert('Por favor, ingrese un número de teléfono válido (9-15 dígitos)');
+      return;
+    }
+
     if (!appointmentType) {
       alert('Por favor, seleccione cómo prefiere ser atendido');
       return;
@@ -108,6 +119,7 @@ function MentalHealthForm() {
         specialty: 'Salud Mental',
         patientId: user.id,
         consultationReason: consultationReason.trim(),
+        phoneNumber: phoneNumber.trim(),
         appointmentType,
         scheduledDate: appointmentType === 'scheduled' ? selectedDate : null,
         scheduledTime: appointmentType === 'scheduled' ? selectedTime : null,
@@ -213,6 +225,16 @@ function MentalHealthForm() {
       fontSize: '1rem',
       resize: 'vertical',
       minHeight: '120px',
+      fontFamily: 'inherit',
+      outline: 'none',
+      transition: 'border-color 0.2s, box-shadow 0.2s'
+    },
+    input: {
+      width: '100%',
+      padding: '0.75rem 1rem',
+      border: '1px solid #d1d5db',
+      borderRadius: '0.5rem',
+      fontSize: '1rem',
       fontFamily: 'inherit',
       outline: 'none',
       transition: 'border-color 0.2s, box-shadow 0.2s'
@@ -428,6 +450,28 @@ function MentalHealthForm() {
               />
               <p style={styles.charCounter}>
                 {consultationReason.length}/500 caracteres
+              </p>
+            </div>
+
+            {/* Número de teléfono */}
+            <div style={styles.fieldGroup}>
+              <label htmlFor="phoneNumber" style={styles.label}>
+                Número de teléfono *
+              </label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                placeholder="Ej: 612345678 o +34 612 345 678"
+                style={styles.input}
+                maxLength={20}
+                required
+                onFocus={(e) => e.target.style.borderColor = '#9333ea'}
+                onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+              />
+              <p style={styles.charCounter}>
+                Número donde podamos contactarle para la consulta
               </p>
             </div>
 
