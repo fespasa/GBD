@@ -10,27 +10,12 @@ function TriageSimple() {
   useEffect(() => {
     if (specialty === 'mental-health') {
       navigate('/mental-health-form', { replace: true });
-      return;
     }
   }, [specialty, navigate]);
 
-  // Si es salud mental, no renderizar nada mientras redirige
+  // Si es salud mental, mostrar pantalla de carga
   if (specialty === 'mental-health') {
-    return (
-      <div style={{ 
-        minHeight: '100vh', 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white'
-      }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🧠</div>
-          <div>Redirigiendo a Salud Mental...</div>
-        </div>
-      </div>
-    );
+    return null; // No renderizar nada mientras redirige
   }
 
   return <TriageEngine />;
